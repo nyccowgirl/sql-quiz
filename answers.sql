@@ -113,6 +113,20 @@ SELECT common_name FROM melons WHERE common_name LIKE '%Golden%';
 
 
 ==========
+9
+
+-----
+
+Write a query that shows all the distinct regions that a salesperson can belong to.
+
+
+-----
+
+
+SELECT DISTINCT region FROM salespeople;
+
+
+==========
 10
 
 -----
@@ -281,3 +295,58 @@ orders made by 'pclark74@gmail.com'. Use a subselect to do this.
 
 
 SELECT orders.id, status, order_total FROM orders JOIN customers ON customers.id = orders.customer_id WHERE customers.email = 'pclark74@gmail.com';
+
+
+==========
+22
+
+-----
+
+Write a query that shows the id, status, and order total for all orders
+made by 'pclark74@gmail.com'. Use a join to do this.
+
+-----
+
+
+SELECT orders.id, status, order_total FROM orders JOIN customers ON customers.id = orders.customer_id WHERE email = 'pclark74@gmail.com';
+
+
+==========
+23
+
+-----
+
+Write a query that shows all columns in the order_items table for order #2725.
+
+-----
+
+
+SELECT * FROM order_items WHERE order_id = '2725';
+
+
+==========
+24
+
+-----
+
+Write a query that shows the common_name, melon_type, quantity,
+unit_price and total_price for all the melons in order #2725.
+
+-----
+
+
+SELECT common_name, melon_type, quantity, unit_price, total_price FROM order_items JOIN melons ON melons.id = order_items.melon_id WHERE order_id = '2725';
+
+
+==========
+25
+
+-----
+
+Write a query that shows the total amount of revenue that comes from
+internet orders.
+
+-----
+
+
+SELECT SUM(order_total) FROM orders WHERE salesperson_id is NULL;
